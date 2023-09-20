@@ -1,9 +1,29 @@
 package main
 
+import (
+	"fmt"
+	"log"
+	"net/http"
+)
+
+const webPort = "80"
+
+type Config struct{}
+
 func main() {
+	app := Config{}
 
-	// right now its going to be simple
-	// connect from frontend to broker service
-	//
+	log.Printf("Starting broker service on port %s\n", webPort)
 
+	// define http server
+	srv := &http.Server{
+		Addr:    fmt.Sprintf(":%s", webPort),
+		Handler: app.routes(),
+	}
+
+	// start the server
+	err := srv.ListenAndServe()
+	if err != nil {
+		log.Panic(err)
+	}
 }
