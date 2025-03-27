@@ -3,7 +3,7 @@ scalar Time
 type Account {
   id: String!
   name: String!
-  orders: [order!]!
+  orders: [Order!]!
 }
 
 type Product {
@@ -49,7 +49,7 @@ input OrderedProductInput {
 
 input OrderInput {
   accountId: String!
-  products: [OrderProductInput!]!
+  products: [OrderedProductInput!]!
 }
 
 type Mutation {
