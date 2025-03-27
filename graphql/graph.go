@@ -19,13 +19,22 @@ func NewGraphQLserver(accountUrl, catalogUrl, orderUrl string) (*Server, error) 
 	catalogClient, err := catalog.NewClient(catalogUrl)
 
 	if err != nil {
+		accountClient.Close()
 		return nil, err
 	}
 
 	orderClient, err := order.NewClient(orderUrl)
 
 	if err != nil {
+		accountClient.close()
+		catalogClient.close()
 		return nil, err
 	}
+
+	return &Server{
+		accountClient,
+		catalogClient,
+		orderClient,
+	}, nil
 
 }
