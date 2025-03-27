@@ -17,6 +17,6 @@ func (r *mutationResolver) createProduct(ctx context.Context, in ProductInput) (
 
 }
 
-func (r *mutationResolver) createOrder(ctx context.Context, in AccountInput) (*Account, error) {
+func (r *mutationResolver) createOrder(ctx context.Context, in OrderInput) (*Order, error) {
 	return nil, nil
 }
