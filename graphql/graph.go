@@ -1,5 +1,7 @@
 package main
 
+import "github.com/99designs/gqlgen/graphql"
+
 // central file to the whole api gateway
 // with the help of server we can call the account product and order client
 
@@ -37,4 +39,29 @@ func NewGraphQLserver(accountUrl, catalogUrl, orderUrl string) (*Server, error) 
 		orderClient,
 	}, nil
 
+}
+
+func (s *Server) Mutation() MutationResolver {
+	return &mutationResolver{
+		server: s,
+	}
+}
+
+func (s *Server) Query() QueryResolver {
+	return &queryResolver{
+		server: s,
+	}
+
+}
+
+func (s *Server) Account() AccountResolver {
+	return &accountResolver{
+		server: s,
+	}
+}
+
+func (s *Server) ToExecutableSchema() graphql.ExecutableSchema {
+	return NewExecutableSchema(Config{
+		Resolvers: s,
+	})
 }
