@@ -1,8 +1,13 @@
 package account
 
 import (
-"context"
-"google.golang.org/grpc"
+	"context"
+	"fmt"
+	"net"
+
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
+)
 
 
 type grpcServer  struct {
@@ -10,11 +15,14 @@ type grpcServer  struct {
 }
 
 func ListenGRPC (s Service,port int) error {
-	lis,err : net.Listen("tcp",fmt.Sprintf(":%d",port))
+	lis,err := net.Listen("tcp",fmt.Sprintf(":%d",port))
 	if err !=nil {
 		return err
 	}
-	grpc
+	serv := grpc.NewServer()
+	reflection.Register(serv)
+	return serv.Serve(lis)
+
 }
 
 func (s *grpcServer) PostAccount(ctx context.Context,r *pb.)(*pb.,error) {
