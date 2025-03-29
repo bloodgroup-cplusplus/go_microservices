@@ -48,9 +48,9 @@ func (r *postgresRepository) PutAccount(ctx context.Context, a Account) error {
 }
 
 func (r *postgresRepository) GetAccountByID(ctx context.Context, id string) (*Account, error) {
-	r.db.QueryRowContext(ctx, "SELECT id,name FROM account WHERE id = $1", id)
+	rows := r.db.QueryRowContext(ctx, "SELECT id,name FROM account WHERE id = $1", id)
 	a := &Account{}
-	if err := row.Scan(&a.ID, &a.Name); err != nil {
+	if err := rows.Scan(&a.ID, &a.Name); err != nil {
 		return nil, err
 	}
 	return a, nil
@@ -58,7 +58,7 @@ func (r *postgresRepository) GetAccountByID(ctx context.Context, id string) (*Ac
 }
 
 func (r *postgresRepository) ListAccounts(ctx context.Context, skip uint64, take uint64) ([]Account, error) {
-	rows, err := r.db.Querycontext(
+	rows, err := r.db.QueryContext(
 		ctx,
 		"SELECT id,name FROM accounts ORDER BY id DESC OFFSET $1 LIMIT $2",
 		skip,
@@ -68,7 +68,7 @@ func (r *postgresRepository) ListAccounts(ctx context.Context, skip uint64, take
 	if err != nil {
 		return nil, err
 	}
-	defer rows.close()
+	defer rows.Close()
 
 	accounts := []Account{}
 	for rows.Next() {
