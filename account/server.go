@@ -26,7 +26,7 @@ func ListenGRPC (s Service,port int) error {
 
 }
 
-func (s *grpcServer) PostAccount(ctx context.Context,r *pb.)(*pb.,error) {
+func (s *grpcServer) PostAccount(ctx context.Context,r *pb.PostAccountRequest)(*pb.PostAccountResponse,error) {
 	a,err :=s.service.PostAccount(ctx,r.Name)
 	if err !=nil {
 		return nil,err
@@ -35,7 +35,7 @@ func (s *grpcServer) PostAccount(ctx context.Context,r *pb.)(*pb.,error) {
 }
 
 
-func (s *grpcServer) GetAccount (ctx context.Context, r*pb.) (*pb., error) {
+func (s *grpcServer) GetAccount (ctx context.Context, r*pb.GetAccountRequest) (*pb.GetAccountResponse, error) {
 	a, err := s.Service.GetAccount(ctx,r.Id)
 	if err != nil {
 		return nil,err
@@ -43,7 +43,7 @@ func (s *grpcServer) GetAccount (ctx context.Context, r*pb.) (*pb., error) {
 	return &pb.{}
 }
 
-func (s *grpcServer) GetAccounts (ctx context.Context, r *pb.) (*pb.,error) {
+func (s *grpcServer) GetAccounts (ctx context.Context, r *pb.GetAccountsRequest) (*pb.PostAccountsResponse,,error) {
 	a, err := s.service.GetAccounts(ctx,r.Id)
 	if err !=nil {
 		return nil,err
