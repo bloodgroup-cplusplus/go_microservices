@@ -1,6 +1,8 @@
 package account
 
-import "context"
+import (
+"context"
+"github.com/segmentio/ksuid"
 
 type Service interface {
 	PostAccount(ctx context.Context, name string) (*Account, error)
@@ -21,13 +23,17 @@ func newService(r Repository) Service {
 	return &accountService{r}
 }
 func (s *accountService) PostAccount(ctx context.Context, name string) (*Account, error) {
-	return nil, nil
+	a : = &Account {
+		Name:name,
+		ID: ksuid.New().String
+	}
+	s.repository.PutAccount()
 }
 
 func (s *accountService) GetAccount(ctx context.Context, id string) (*Account, error) {
-	return nil, nil
+	s.repository.GetAccountByID()
 }
 
 func (s *accountService) GetAccounts(ctx context.Context, skip uint64, take uint64) ([]Account, error) {
-	return nil, nil
+	s.repository.ListAccounts()
 }
