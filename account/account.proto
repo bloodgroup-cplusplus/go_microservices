@@ -1,0 +1,45 @@
+// using this file we create the proto file
+
+syntax = "proto3"
+
+package pb;
+
+message Account {
+string id
+}
+
+message PostAccountRequest {
+
+}
+
+message PostAccountResponse {
+
+}
+
+message GetAccountRequest {
+
+}
+
+message GetAccountResponse {
+
+}
+
+message GetAccountsRequest {
+
+}
+
+message GetAccountsResponse {
+
+}
+
+service AccountService {
+    rpc PostAccoutn (PostAccountRequest) returns (PostAccountResponse) {
+
+    }
+    rpc GetAccount (GetAccountRequest) returns (GetAccountResponse) {
+
+    }
+    rpc GetAccounts (GetAccountsRequest) returns (GetAccountsResponse) {
+
+    }
+}

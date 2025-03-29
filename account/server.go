@@ -20,6 +20,7 @@ func ListenGRPC (s Service,port int) error {
 		return err
 	}
 	serv := grpc.NewServer()
+	pb.(serv,)
 	reflection.Register(serv)
 	return serv.Serve(lis)
 
