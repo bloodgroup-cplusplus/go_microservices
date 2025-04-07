@@ -32,7 +32,7 @@ message GetAccountResponse {
 }
 
 message GetAccountsRequest {
-   unit64 skip = 1;
+   uint64 skip = 1;
    uint64 take = 2;
 
 
