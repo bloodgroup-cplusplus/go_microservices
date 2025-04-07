@@ -7,6 +7,8 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
+	"github.com/bloodgroupcplusplus/go_microservices/account/pb"
+	"github.com/bloodgroupcplusplus/go_microservices/account/pb/github.com/bloodgroup_cplusplus/go_microservices/account/pb"
 )
 
 

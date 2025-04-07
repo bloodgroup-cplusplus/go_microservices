@@ -19,6 +19,7 @@ require (
 	github.com/lib/pq v1.10.9 // indirect
 	github.com/segmentio/ksuid v1.0.4 // indirect
 	github.com/sosodev/duration v1.3.1 // indirect
+	github.com/tinrab/retry v1.0.0 // indirect
 	golang.org/x/net v0.37.0 // indirect
 	golang.org/x/sys v0.31.0 // indirect
 	golang.org/x/text v0.23.0 // indirect
