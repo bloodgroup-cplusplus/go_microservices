@@ -1,8 +1,10 @@
 // using this file we create the proto file
 
-syntax = "proto3"
+syntax = "proto3";
 
 package pb;
+
+option go_package = "github.com/bloodgroup_cplusplus/go_microservices/account/pb";
 
 message Account {
 string id = 1;
